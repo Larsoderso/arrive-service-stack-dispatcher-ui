@@ -17,11 +17,12 @@ function RegionMap(props) {
         style={{ width: "100%", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/light-v9"
         accessToken="pk.eyJ1IjoibGFyc2RpIiwiYSI6ImNrMXY1NzllOTAwZGYza3RrbWVpeDl1NTMifQ.iFu8GW4UGAtz9wtC3ILchA"
-        latitude={37.78}
-        longitude={-122.41}
+        latitude={50.935173}
+        longitude={6.953101}
         zoom={11}
       >
         <Draw
+          modeOptions={["polygon"]}
           onDrawCreate={({ features }) => drawDone(features)}
           onDrawUpdate={({ features }) => setFeatures({ features })}
         />

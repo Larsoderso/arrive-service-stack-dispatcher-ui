@@ -4,6 +4,8 @@ import RegionMap from "./region_map";
 import axios from "axios";
 
 import RegionOnboardingTap from "./components/onboarding/tab";
+import MobilityServiceCard from "./components/onboarding/service-card";
+
 export default function App() {
   const [activetab, setActivetab] = useState(1);
 
@@ -13,7 +15,10 @@ export default function App() {
 
   function regionNameSet() {
     axios
-      .get(`http://85.214.215.225:33020/region/new/` + regionName)
+      .get(
+        `https://stack-dispatcher.api.arrive-mobility.com/region/new/` +
+          regionName
+      )
       .then(res => {
         //const persons = res.data;
       });
@@ -33,7 +38,7 @@ export default function App() {
   return (
     <div>
       <div
-        className="am_os_header_full  am_row"
+        className="am_os_header_full  am_row grey"
         style={{ borderBottom: "1px solid #f5f7fa" }}
       >
         <div className="am_logo_container">
@@ -72,7 +77,12 @@ export default function App() {
           viewBox="0 0 23 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ marginTop: "12px", marginLeft: "8px", width: "12px" }}
+          style={{
+            marginTop: "12px",
+            marginLeft: "8px",
+            width: "12px",
+            display: "none"
+          }}
         >
           <path d="M0.461853 1.30566L22.0004 22.8442" stroke="#DFDFDF" />
           <path d="M21.9971 1.30566L0.458559 22.8442" stroke="#DFDFDF" />
@@ -84,7 +94,8 @@ export default function App() {
             backgroundColor: "rgb(33, 59, 150)",
             marginTop: "8px",
             borderRadius: "14px",
-            marginLeft: "10px"
+            marginLeft: "10px",
+            display: "none"
           }}
         />
         <div
@@ -358,69 +369,221 @@ export default function App() {
             </div>
           )}
           {activetab == 3 && (
-            <div
-              className="am_integration_illustration_bx"
-              style={{ padding: "12px" }}
-            >
-              <svg
-                width={33}
-                height={39}
-                viewBox="0 0 33 39"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div>
+              <div
+                className="am_integration_illustration_bx"
+                style={{ padding: "12px", height: "160px", display: "none" }}
               >
-                <circle
-                  cx="16.5"
-                  cy="16.5"
-                  r="16.5"
-                  fill="black"
-                  fillOpacity="0.63"
+                <svg
+                  width={33}
+                  height={39}
+                  viewBox="0 0 33 39"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="16.5"
+                    cy="16.5"
+                    r="16.5"
+                    fill="black"
+                    fillOpacity="0.63"
+                    style={{ fill: "white", fillOpacity: 1 }}
+                  />
+                  <rect
+                    x={15}
+                    y={24}
+                    width={3}
+                    height={15}
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                  <path
+                    d="M9 13H24V20C24 22.7614 21.7614 25 19 25H14C11.2386 25 9 22.7614 9 20V13Z"
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                  <rect
+                    x={12}
+                    y={9}
+                    width={2}
+                    height={4}
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                  <rect
+                    x={12}
+                    y={9}
+                    width={2}
+                    height={4}
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                  <rect
+                    x={19}
+                    y={9}
+                    width={2}
+                    height={4}
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                  <rect
+                    x={19}
+                    y={9}
+                    width={2}
+                    height={4}
+                    fill="#FFDB8E"
+                    style={{ fill: "#192a31" }}
+                  />
+                </svg>
+              </div>
+              <div
+                style={{
+                  paddingTop: "22px",
+                  paddingBottom: "12px",
+                  fontWeight: 600,
+                  fontSize: "24px",
+                  color: "#172f3e"
+                }}
+              >
+                {" "}
+                Mobilitätsdienste auswählen{" "}
+              </div>{" "}
+              <div>
+                {" "}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum.
+              </div>
+              <div style={{ paddingTop: 22, color: "#b5bdc1" }}>
+                {" "}
+                Verkehrsverbünde{" "}
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr 1fr ",
+                  paddingTop: "22px"
+                }}
+              >
+                {" "}
+                <MobilityServiceCard
+                  brandColor="linear-gradient(180deg, #55AB26 0%, #007F32 100%)"
+                  ServiceName="Verkehrsverbund Rhein-Ruhr"
+                  secondLine="Bus, Bahn, Tram, U-Bahn"
                 />
-                <rect x={15} y={24} width={3} height={15} fill="#FFDB8E" />
-                <path
-                  d="M9 13H24V20C24 22.7614 21.7614 25 19 25H14C11.2386 25 9 22.7614 9 20V13Z"
-                  fill="#FFDB8E"
+                <MobilityServiceCard
+                  brandColor="#A2FAF0"
+                  ServiceName="Verkehrsverbund Rhein-Sieg"
                 />
-                <rect x={12} y={9} width={2} height={4} fill="#FFDB8E" />
-                <rect x={12} y={9} width={2} height={4} fill="#FFDB8E" />
-                <rect x={19} y={9} width={2} height={4} fill="#FFDB8E" />
-                <rect x={19} y={9} width={2} height={4} fill="#FFDB8E" />
-              </svg>
+                <MobilityServiceCard
+                  brandColor="#FF6600"
+                  ServiceName="Verkehrsverbund Stuttgart"
+                />
+                <MobilityServiceCard
+                  brandColor="#E10A1D"
+                  ServiceName="Verkehrsverbund Berlin-Brandenburg"
+                />
+              </div>
+              <div style={{ paddingTop: 22, color: "#b5bdc1" }}>
+                {" "}
+                Tretroller/ Scooter{" "}
+              </div>{" "}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr 1fr ",
+                  paddingTop: "22px"
+                }}
+              >
+                <MobilityServiceCard brandColor="#69D2AA" ServiceName="Tier" />
+                <MobilityServiceCard brandColor="#F46C63" ServiceName="Voi" />
+                <MobilityServiceCard
+                  brandColor="#00ACE9"
+                  ServiceName="Stella"
+                />
+
+                <MobilityServiceCard
+                  brandColor="#E30613"
+                  ServiceName="Rhingo"
+                />
+
+                <MobilityServiceCard brandColor="#282828" ServiceName="dott" />
+              </div>
+              <div style={{ paddingTop: 22, color: "#b5bdc1" }}>
+                {" "}
+                Carsharing{" "}
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr 1fr 1fr ",
+                  paddingTop: "22px"
+                }}
+              >
+                <MobilityServiceCard brandColor="black" ServiceName="Miles" />
+              </div>
+              <div
+                onClick={() => setActivetab(4)}
+                style={{
+                  width: "120px",
+                  height: "40px",
+                  background: "#00F464",
+                  borderRadius: "18px",
+                  marginLeft: "auto",
+                  marginTop: "auto",
+                  marginBottom: "12px",
+                  color: "white",
+                  textAlign: "center",
+                  lineHeight: "40px"
+                }}
+              >
+                weiter
+              </div>
             </div>
           )}
           {activetab == 2 && <RegionMap drawingDone={() => setActivetab(3)} />}
 
           {activetab == 4 && (
-            <svg
-              style={{ display: "block", margin: "0 auto", marginTop: 42 }}
-              width={154}
-              height={234}
-              viewBox="0 0 154 234"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                className="path"
-                d="M86 234V184.5H1V109.5H64.5"
-                stroke="#BF1FCD"
-                strokeWidth={2}
-              />
-              <path
-                className="path"
-                d="M32 1.5H152.5V112H95.5"
-                stroke="#BF1FCD"
-                strokeWidth={2}
-              />
-              <circle
-                className="path"
-                cx={80}
-                cy={109}
-                r={15}
-                fill="white"
-                stroke="#BF1FCD"
-                strokeWidth={2}
-              />
-            </svg>
+            <div>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={"https://" + regionName + ".os.arrive-mobility.com"}
+              >
+                {regionName}
+              </a>
+              <svg
+                style={{ display: "block", margin: "0 auto", marginTop: 42 }}
+                width={154}
+                height={234}
+                viewBox="0 0 154 234"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  className="path"
+                  d="M86 234V184.5H1V109.5H64.5"
+                  stroke="#BF1FCD"
+                  strokeWidth={2}
+                />
+                <path
+                  className="path"
+                  d="M32 1.5H152.5V112H95.5"
+                  stroke="#BF1FCD"
+                  strokeWidth={2}
+                />
+                <circle
+                  className="path"
+                  cx={80}
+                  cy={109}
+                  r={15}
+                  fill="white"
+                  stroke="#BF1FCD"
+                  strokeWidth={2}
+                />
+              </svg>
+            </div>
           )}
         </div>
       </div>
